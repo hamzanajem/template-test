@@ -24,11 +24,13 @@ quotecontainer.hidden=true;
 function complete(){
     loader.hidden=true;
 quotecontainer.hidden=false;
+
 }
 
 async function getQuote(){
     showloader();
-    const apiUrl= 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
+    const proxy="https://corsanywhere.herokuapp.com/";
+    const apiUrl= proxy +'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
     try {
     const response =await fetch(apiUrl);
    const data = await response.json();
@@ -57,7 +59,7 @@ async function getQuote(){
     
     }
     catch(error){
-        getQuote();
+       // getQuote();
        
         console.log('error is ', error);
     }
